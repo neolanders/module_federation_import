@@ -47,9 +47,10 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "host",
       filename: "remoteEntry.js",
-      remotes: {
-        "my-nav": "nav@http://localhost:3001/remoteEntry.js",
-      },
+      remotes: {},
+      // remotes: {
+      //   "my-nav": "nav@http://localhost:3001/remoteEntry.js",
+      // },
       exposes: {},
       shared: {
         ...deps,
@@ -67,4 +68,5 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
+  devtool: 'source-map'
 };

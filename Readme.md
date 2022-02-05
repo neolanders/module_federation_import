@@ -10,10 +10,10 @@ a remote, at runtime
 The goal of the exercise is to try to include module federation code indirectly in a legacy application that doesn't know about module federation.  And maybe doesn't even use webpack (this one does, but another bundler like rollup could be used alternatively in the legacy application).  The package ("host") that is imported into the legacy application is built to run webpack module federation, and has all the knowledge of the remote. 
 
 ## Warning
-As written, this code *does not* run. It is posted to share with others to see if they can uncover mistakes made by me, or to confirm that this model will not work.
+As originally written, using the standard ModuleFederationPlugin, trying to access the remote didn't work in this scenario.  I switched to using the custom dynamic loading approach, and that appears to work.
 
 ## Credit
-The basic module federation code is based on https://github.com/module-federation/module-federation-examples, and the Practical Module Federation book.  Any mistakes in this repo are mine, not those of the original authors (which does not promoted the static import approach attempted here)
+The basic module federation code, including the custom dynamic loading code in module_fed_package\packages\host\src\App.jsx, is based on https://github.com/module-federation/module-federation-examples, and the Practical Module Federation book.  Any mistakes in this repo are mine, not those of the original authors (which does not promoted the static import approach attempted here)
 
 ## Installation & reproduction steps
 1. Clone the repo
@@ -24,10 +24,12 @@ The basic module federation code is based on https://github.com/module-federatio
 6. In the same shell, run "yarn start"
 
 ## Results
-After the final reproduction steps, an error like this should be seen in the browser:
+Web page shows content like this:
 
-Compiled with problems:
+> This is the legacy application
+> I'm the header!
+> This is the npm included host, which attempts to use module federation to include the header from another package
 
-ERROR in ./node_modules/host/src/App.jsx 5:45-68
+This demonstrates a "dumb", legacy application can statically load a smart module federation based host, which includes functionality from a modular federation remote
 
-Module not found: Error: Can't resolve 'my-nav/Header' in 'path\legacyApp\node_modules\host\src'
+
