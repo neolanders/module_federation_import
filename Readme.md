@@ -23,6 +23,14 @@ The basic module federation code, including the custom dynamic loading code in m
 5. In yet another shell, navigate to legacyApp. Run "yarn"
 6. In the same shell, run "yarn start"
 
+
+### Note: TO run the legacyApp on local you must first create a symlink for react
+
+- cd module_federation_import/module_fed_package/packages/host/node_modules/react
+- npm link
+- cd legacyApp
+- npm link react
+
 ## Results
 Web page shows content like this:
 
