@@ -7,7 +7,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 3000,
+    port: 3002,
     historyApiFallback: true,
   },
 
@@ -16,8 +16,11 @@ module.exports = {
       {
         test: /\.m?js/,
         type: "javascript/auto",
+        // resolve: {
+        //   fullySpecified: false,
+        // },
         resolve: {
-          fullySpecified: false,
+          enforceExtension: false,
         },
       },
       {

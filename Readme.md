@@ -26,7 +26,7 @@ The basic module federation code, including the custom dynamic loading code in m
 
 ### Note: TO run the legacyApp on local you must first create a symlink for react
 
-- cd module_federation_import/module_fed_package/packages/host/node_modules/react
+- cd module_fed_package/packages/host/node_modules/react
 - npm link
 - cd legacyApp
 - npm link react
